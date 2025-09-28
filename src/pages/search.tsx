@@ -1,4 +1,4 @@
-import Button from "@/components/Button";
+import Button from "@/components/ButtonGoMain";
 import PostLists from "@/components/PostLists";
 import SearchInput from "@/components/SearchInput";
 import { useSearchPosts } from "@/hooks/usePosts";
