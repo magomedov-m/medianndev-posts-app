@@ -5,6 +5,7 @@ import {
   hydrate,
 } from "@tanstack/react-query";
 import type { AppProps } from "next/app";
+import Head from "next/head";
 import { useState } from "react";
 // import { config } from 'tanstack/react-query-config';
 
@@ -17,6 +18,10 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <Head>
+        <title>Medianndev posts app</title>
+        <link rel="icon" href="/mediannLogo.svg" />
+      </Head>
       <Component {...pageProps} />
     </QueryClientProvider>
   );
