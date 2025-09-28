@@ -13,7 +13,7 @@ interface PostContentProps {
 
 const PostListItem: React.FC<PostContentProps> = ({ post }) => {
   return (
-    <div className="mx-auto max-w-[800px] bg-slate-100 rounded-2xl shadow-md p-6 flex flex-col gap-4 mt-8">
+    <div className="mx-auto max-w-[800px] bg-slate-100 rounded-2xl shadow-md p-6 flex flex-col gap-4 mt-8 hover:shadow-lg">
       <h1 className="text-2xl font-bold text-slate-800">{post.title}</h1>
       <div className="flex gap-4 text-slate-700 text-sm">
         <span>

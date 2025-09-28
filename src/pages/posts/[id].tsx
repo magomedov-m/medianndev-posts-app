@@ -3,11 +3,12 @@ import { getPostById } from "@/api/posts";
 import { useFetchPostById } from "@/hooks/usePosts";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/router";
-import { getServerSideProps } from "next/dist/build/templates/pages";
+import PostListItem from "@/components/PostListItem";
+import Button from "@/components/Button";
 
-const GetServerSideProps = async (ctx: { params: { id: number } }) => {
-  const { id } = ctx.params;
 
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const id = Number(ctx.params?.id);
   const queryClient = new QueryClient();
 
   await queryClient.fetchQuery({
@@ -22,29 +23,21 @@ const GetServerSideProps = async (ctx: { params: { id: number } }) => {
   };
 };
 
-export default getServerSideProps
+const PostPage: React.FC = () => {
+  const router = useRouter();
+  const id = Number(router.query.id);
 
-// const PostPage = () => {
-//   const router = useRouter();
-//   const { id } = router.query;
-//   const { data, isLoading, isError } = useFetchPostById(Number(id));
+  const { data, isLoading, isError } = useFetchPostById(id);
 
-//   return (
-//     <div className="mx-auto max-w-[800px] bg- rounded-2xl shadow-md p-6 flex flex-col gap-4">
-//       <h1 className="text-2xl font-bold text-slate-800">{data.title}</h1>
-//       <div className="flex gap-4 text-slate-700 text-sm">
-//         <span>
-//           <strong>ID:</strong> {data.id}
-//         </span>
-//         <span>
-//           <strong>User ID:</strong> {data.userId}
-//         </span>
-//       </div>
-//       <p className="text-slate-700 text-justify [hyphens:auto] leading-relaxed">
-//         {data.body}
-//       </p>
-//     </div>
-//   );
-// };
+  if (isLoading) return <div className="p-6 text-center">Загрузка...</div>
+  if (isError) return <div className="p-6 text-center">Ошибка при загрузке поста</div>
 
-// export default PostPage;
+  return (
+    <>
+      <PostListItem post={data} />
+      <Button />
+    </>
+  );
+};
+
+export default PostPage;

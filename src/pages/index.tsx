@@ -6,7 +6,7 @@ interface Props {
   className?: string;
 }
 
-const index: React.FC<Props> = ({ className }) => {
+const index: React.FC<Props> = () => {
   const { data, isLoading, isError } = useFetchPosts();
 
   if (isLoading) return <div>Загрузка...</div>;
