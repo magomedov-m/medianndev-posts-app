@@ -4,8 +4,7 @@ import { useFetchPostById } from "@/hooks/usePosts";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import PostListItem from "@/components/PostListItem";
-import Button from "@/components/Button";
-
+import Button from "@/components/ButtonGoMain";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const id = Number(ctx.params?.id);
@@ -29,8 +28,9 @@ const PostPage: React.FC = () => {
 
   const { data, isLoading, isError } = useFetchPostById(id);
 
-  if (isLoading) return <div className="p-6 text-center">Загрузка...</div>
-  if (isError) return <div className="p-6 text-center">Ошибка при загрузке поста</div>
+  if (isLoading) return <div className="p-6 text-center">Загрузка...</div>;
+  if (isError)
+    return <div className="p-6 text-center">Ошибка при загрузке поста</div>;
 
   return (
     <>
