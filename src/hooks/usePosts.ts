@@ -10,8 +10,5 @@ export const useFetchPosts = () =>
 export const useFetchPostById = (id: number) =>
     useQuery({
         queryKey: ['post', id],
-        queryFn: ({ queryKey }) => {
-            const [, postId] = queryKey as [string, number];
-            return getPostById(postId);
-        }
-    })
+        queryFn: () => getPostById(id),
+    });
