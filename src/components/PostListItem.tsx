@@ -1,11 +1,5 @@
 import React from "react";
-
-interface Post {
-  id: number;
-  userId: number;
-  title: string;
-  body: string;
-}
+import { Post } from "@/types/post";
 
 interface PostContentProps {
   post: Post;
