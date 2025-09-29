@@ -1,8 +1,8 @@
 import NavBar from "@/components/NavBar";
 import Pagination from "@/components/Pagination";
 import PostLists from "@/components/PostLists";
+import Skeleton from "@/components/Skeleton";
 import { usePagination } from "@/hooks/usePagination";
-import { useFetchPosts } from "@/hooks/usePosts";
 import React from "react";
 
 interface Props {
@@ -10,19 +10,32 @@ interface Props {
 }
 
 const index: React.FC<Props> = () => {
-  const { currentPosts, currentPage, totalPages, nextPage, prevPage } =
-    usePagination(8);
-
-  const { data, isLoading, isError } = useFetchPosts();
-
-  if (isLoading) return <div>Загрузка...</div>;
-  if (isError) return <div>Непредвиденная ошибка...</div>;
+  const {
+    currentPosts,
+    currentPage,
+    totalPages,
+    nextPage,
+    prevPage,
+    isLoading,
+    isError,
+  } = usePagination(8);
 
   return (
     <div className="mx-auto max-w-[1140px] p-6">
       <NavBar />
+
+      {isLoading && (
+        <Skeleton />
+      )}
+      {isError && "Непредвиденная ошибка"}
+
       <PostLists posts={currentPosts} />
-      <Pagination currentPage={currentPage} totalPages={totalPages} onPrev={prevPage} onNext={nextPage} />
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPrev={prevPage}
+        onNext={nextPage}
+      />
     </div>
   );
 };
