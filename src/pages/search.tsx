@@ -1,4 +1,4 @@
-import Button from "@/components/ButtonGoMain";
+import ButtonGoMain from "@/components/ButtonGoMain";
 import PostLists from "@/components/PostLists";
 import SearchInput from "@/components/SearchInput";
 import { useSearchPosts } from "@/hooks/usePosts";
@@ -34,10 +34,10 @@ const SearchPage: React.FC<Props> = () => {
 
         {!isLoading && posts && posts.length === 0 && (
           <div className="p-6 text-center text-slate-600">
-            Ничего не найдено для
-            <span className="font-medium">"{debounceQuery}"</span>.
+            Ничего не найдено по
+            <span className="font-medium"> "{debounceQuery}"</span>.
             <div className="mt-4">
-              <Button />
+              <ButtonGoMain />
             </div>
           </div>
         )}

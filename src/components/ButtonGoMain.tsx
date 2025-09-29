@@ -2,16 +2,17 @@ import Link from "next/link";
 import React from "react";
 
 interface Props {
-  className?: string;
+  path: string;
+  text: string;
 }
 
-const ButtonGoMain: React.FC<Props> = () => {
+const Button: React.FC<Props> = ({ path, text }) => {
   return (
     <>
       <div className="mx-auto max-w-[800px] mt-4">
-        <Link href="/">
-          <button className="px-4 py-2 bg-sky-500 text-white rounded-lg ml-3 hover:bg-sky-600 transition-colors cursor-pointer">
-            Вернуться на главную
+        <Link href={path}>
+          <button className="px-4 py-2 bg-[#5031be] text-white rounded-lg hover:bg-[#3f1dbb] transition-colors cursor-pointer">
+            {text}
           </button>
         </Link>
       </div>
@@ -19,4 +20,4 @@ const ButtonGoMain: React.FC<Props> = () => {
   );
 };
 
-export default ButtonGoMain;
+export default Button;
