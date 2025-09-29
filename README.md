@@ -43,7 +43,7 @@
 
 1. Клонируем репозиторий:  
 ```bash
-git clone https://github.com/magomedov-m/medianndev-posts-app.git<br/>
+git clone https://github.com/magomedov-m/medianndev-posts-app.git
 cd medianndev-posts-app
 
 2. Устанавливаем зависимости:
@@ -54,7 +54,7 @@ npm run dev
 
 4. Откройте браузер по адресу: http://localhost:3000
 
-🏗 Архитектура и подходы <br />
+🏗 Архитектура и подходы
 Компоненты
 PostLists, PostListItem — вывод списка постов.
 
