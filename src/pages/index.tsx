@@ -1,3 +1,4 @@
+import NavBar from "@/components/NavBar";
 import Pagination from "@/components/Pagination";
 import PostLists from "@/components/PostLists";
 import { usePagination } from "@/hooks/usePagination";
@@ -19,6 +20,7 @@ const index: React.FC<Props> = () => {
 
   return (
     <div className="mx-auto max-w-[1140px] p-6">
+      <NavBar />
       <PostLists posts={currentPosts} />
       <Pagination currentPage={currentPage} totalPages={totalPages} onPrev={prevPage} onNext={nextPage} />
     </div>

@@ -5,6 +5,7 @@ import { dehydrate, QueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import PostListItem from "@/components/PostListItem";
 import Button from "@/components/ButtonGoMain";
+import ButtonGoMain from "@/components/ButtonGoMain";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const id = Number(ctx.params?.id);
@@ -35,7 +36,7 @@ const PostPage: React.FC = () => {
   return (
     <>
       <PostListItem post={data} />
-      <Button />
+      <ButtonGoMain path="/" text="Вернуться на главную" />
     </>
   );
 };
