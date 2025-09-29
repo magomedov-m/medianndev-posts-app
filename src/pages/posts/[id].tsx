@@ -17,7 +17,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   return {
     props: {
-      dehydrateState: dehydrate(queryClient),
+      dehydratedState: dehydrate(queryClient),
     },
   };
 };
@@ -28,9 +28,8 @@ const PostPage: React.FC = () => {
 
   const { data, isLoading, isError } = useFetchPostById(id);
 
-  if (isLoading) return <div className="p-6 text-center">Загрузка...</div>;
-  if (isError)
-    return <div className="p-6 text-center">Ошибка при загрузке поста</div>;
+  {isLoading && <div className="p-6 text-center">Загрузка...</div>}
+  {isError && <div className="p-6 text-center">Ошибка при загрузке поста</div>}
 
   return (
     <>

@@ -24,9 +24,7 @@ const index: React.FC<Props> = () => {
     <div className="mx-auto max-w-[1140px] p-6">
       <NavBar />
 
-      {isLoading && (
-        <Skeleton />
-      )}
+      {isLoading && <Skeleton />}
       {isError && "Непредвиденная ошибка"}
 
       <PostLists posts={currentPosts} />

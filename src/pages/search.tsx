@@ -1,5 +1,4 @@
 import ButtonGoMain from "@/components/ButtonGoMain";
-import InputButton from "@/components/InputButton/InputButton";
 import PostLists from "@/components/PostLists";
 import SearchInput from "@/components/SearchInput";
 import Skeleton from "@/components/Skeleton";
@@ -38,7 +37,6 @@ const SearchPage: React.FC = () => {
           onClear={clearInput}
         />
 
-        {/* Зачем тут скелетон если данные берутся из кэша? Пользователь может обновить страницу поиска */}
         {isLoading && <Skeleton />}
 
         {isError && (

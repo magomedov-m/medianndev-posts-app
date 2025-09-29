@@ -1,15 +1,9 @@
 import Link from "next/link";
 import React from "react";
-
-interface Posts {
-  body: string;
-  id: number;
-  title: string;
-  userId: number;
-}
+import { Post } from "@/types/post";
 
 interface PostListProps {
-  posts: Posts[] | undefined;
+  posts: Post[] | undefined;
 }
 
 export default function PostLists({ posts }: PostListProps) {
