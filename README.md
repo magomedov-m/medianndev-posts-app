@@ -42,7 +42,7 @@
 ## 💻 Установка и запуск локально
 
 1. Клонируем репозиторий:  
-
+```bash
 git clone https://github.com/magomedov-m/medianndev-posts-app.git<br/>
 cd medianndev-posts-app
 
