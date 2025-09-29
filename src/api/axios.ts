@@ -1,6 +1,1 @@
-import axios from 'axios';
-
-export const api = axios.create({
-    baseURL: "https://jsonplaceholder.typicode.com/",
-    timeout: 10000,
-})
+export const baseUrl = `https://jsonplaceholder.typicode.com/posts/`;
