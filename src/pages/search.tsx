@@ -37,7 +37,7 @@ const SearchPage: React.FC<Props> = () => {
             Ничего не найдено по
             <span className="font-medium"> "{debounceQuery}"</span>.
             <div className="mt-4">
-              <ButtonGoMain />
+              <ButtonGoMain path="/" text="Вернуться на главную" />
             </div>
           </div>
         )}
