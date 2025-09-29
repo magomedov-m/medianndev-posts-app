@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
 
   if (pageProps.dehydrateState) {
-    hydrate(queryClient, pageProps.dehydratedState);
+    hydrate(queryClient, pageProps.dehydrateState);
   }
 
   return (
