@@ -1,6 +1,5 @@
 import { getPostById, getPosts } from "@/api/posts";
 import { useQuery } from "@tanstack/react-query";
-import { useDebounce } from "./useDebounce";
 import { useMemo } from "react";
 
 export const useFetchPosts = () =>
@@ -16,21 +15,19 @@ export const useFetchPostById = (id: number) =>
     });
 
 export const useSearchPosts = (query: string) => {
-    const debouncedQuery = useDebounce(query, 300);
     const { data: posts, isLoading, isError } = useFetchPosts();
 
     const filtered = useMemo(() => {
-        if (!posts) return undefined;
-        const q = (debouncedQuery || "").trim().toLowerCase();
+        if (!posts) return [];
+        const q = query.trim().toLowerCase();
         if (!q) return posts;
         return posts.filter((p: any) => p.title.toLowerCase().includes(q));
-    }, [posts, debouncedQuery]);
+    }, [posts, query]);
 
     return {
         data: filtered,
         isLoading,
         isError,
-        query: debouncedQuery,
         total: filtered?.length ?? 0,
     };
 };
