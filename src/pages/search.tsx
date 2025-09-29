@@ -1,6 +1,7 @@
 import ButtonGoMain from "@/components/ButtonGoMain";
 import PostLists from "@/components/PostLists";
 import SearchInput from "@/components/SearchInput";
+import Skeleton from "@/components/Skeleton";
 import { useSearchPosts } from "@/hooks/usePosts";
 import React, { useState } from "react";
 
@@ -30,7 +31,9 @@ const SearchPage: React.FC = () => {
           onSubmit={handleSearch}
         />
 
-        {isLoading && <div className="p-6 text-center">Загрузка постов...</div>}
+        {/* Зачем тут скелетон если данные берутся из кэша? Пользователь может обновить страницу поиска */}
+        {isLoading && <Skeleton />}
+
         {isError && (
           <div className="p-6 text-center">Ошибка при загрузке данных</div>
         )}
