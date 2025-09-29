@@ -7,7 +7,6 @@ import {
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { useState } from "react";
-// import { config } from 'tanstack/react-query-config';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
