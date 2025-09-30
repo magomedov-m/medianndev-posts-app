@@ -1,40 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Next.js Posts App
 
-## Getting Started
+Приложение для отображения, поиска и просмотра постов с использованием **Next.js**, **React Query**, **Axios** и **Tailwind CSS**.  
 
-First, run the development server:
+[🌐 Деплой на Vercel](https://medianndev.vercel.app/)
 
+---
+
+## 🚀 Возможности приложения
+
+- **Главная страница**  
+  - Список всех постов с заголовками и кратким описанием (первые 100 символов).  
+  - Пагинация с кнопками **Назад / Вперед** для удобного просмотра страниц.  
+
+- **Страница деталей поста**  
+  - Подробная информация о посте.  
+  - Кнопка для возвращения на главную страницу.  
+  - Используется SSR для быстрой загрузки.  
+
+- **Страница поиска**  
+  - Поле для ввода запроса и кнопка поиска.  
+  - Отображение результатов поиска по заголовку.  
+  - Кнопка очистки поля ввода.  
+
+- **Управление состоянием**  
+  - Используется **React Query** для кэширования данных и управления состоянием загрузки.  
+
+- **Скелетоны загрузки**  
+  - Для улучшения UX при ожидании данных.
+
+---
+
+## 🛠 Стек технологий
+
+- [Next.js](https://nextjs.org/) — фреймворк React с SSR и маршрутизацией.  
+- [React Query](https://tanstack.com/query/latest) — управление кэшированием и асинхронными запросами.  
+- [Axios](https://axios-http.com/) — для выполнения HTTP-запросов к JSONPlaceholder API.  
+- [Tailwind CSS](https://tailwindcss.com/) — быстрая стилизация компонентов.  
+
+---
+
+## 💻 Установка и запуск локально
+
+1. Клонируем репозиторий:  
 ```bash
+git clone https://github.com/magomedov-m/medianndev-posts-app.git
+cd medianndev-posts-app
+
+2. Устанавливаем зависимости:
+npm install
+
+3. Запуск приложения в режиме разработки:
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Откройте браузер по адресу: http://localhost:3000
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+🏗 Архитектура и подходы
+Компоненты
+PostLists, PostListItem — вывод списка постов.
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Pagination — управление страницами.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+SearchInput — форма поиска с кнопками «Поиск» и «Очистить».
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Skeleton — отображение загрузки данных.
 
-## Learn More
+Хуки
+useFetchPosts и useFetchPostById — запросы к API через React Query.
 
-To learn more about Next.js, take a look at the following resources:
+useSearchPosts — фильтрация постов по заголовку.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+usePagination — управление текущей страницей и пагинацией.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+SSR
+Страница деталей поста использует getServerSideProps для предзагрузки данных.
 
-## Deploy on Vercel
+UX/UI
+Tailwind CSS для чистого и адаптивного интерфейса.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+Скелетоны для плавного ожидания загрузки данных.

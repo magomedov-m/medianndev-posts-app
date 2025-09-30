@@ -1,20 +1,41 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
+import NavBar from "@/components/NavBar";
+import Pagination from "@/components/Pagination";
+import PostLists from "@/components/PostLists";
+import Skeleton from "@/components/Skeleton";
+import { usePagination } from "@/hooks/usePagination";
+import React from "react";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+interface Props {
+  className?: string;
+}
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const index: React.FC<Props> = () => {
+  const {
+    currentPosts,
+    currentPage,
+    totalPages,
+    nextPage,
+    prevPage,
+    isLoading,
+    isError,
+  } = usePagination(8);
 
-export default function Home() {
   return (
-    <div>
-      hi
+    <div className="mx-auto max-w-[1140px] p-6">
+      <NavBar />
+
+      {isLoading && <Skeleton />}
+      {isError && "Непредвиденная ошибка"}
+
+      <PostLists posts={currentPosts} />
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPrev={prevPage}
+        onNext={nextPage}
+      />
     </div>
   );
-}
+};
+
+export default index;
